@@ -1,0 +1,55 @@
+<mat-card class="w-75">
+  <form [formGroup]="customerForm" (ngSubmit)="saveCustomer()">
+    <mat-form-field class="full-width">
+      <mat-label>Firstname</mat-label>
+      <input matInput placeholder="Firstname" [formControl]="firstname" />
+      <mat-error *ngIf="firstname.hasError('required')">
+        Firstname is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Lastname</mat-label>
+      <input matInput placeholder="Lastname" [formControl]="lastname" />
+      <mat-error *ngIf="lastname.hasError('required')">
+        Lastname is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput [formControl]="email" placeholder="Ex. pat@example.com" />
+      <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="email.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Telephone</mat-label>
+      <input
+        type="tel"
+        matInput
+        placeholder="555-555-1234"
+        [formControl]="phone"
+      />
+      <mat-error *ngIf="phone.hasError('required')">
+        Phone is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-radio-group aria-label="Select an option" [formControl]="gender">
+      <mat-radio-button value="Male">Male</mat-radio-button>
+      <mat-radio-button value="Female">Female</mat-radio-button>
+    </mat-radio-group>
+    <button
+      class="btn btn-success float-right"
+      [disabled]="!customerForm.valid"
+      type="submit"
+    >
+      Save
+    </button>
+  </form>
+</mat-card>

@@ -1,0 +1,24 @@
+<mat-card class="card align-self-center">
+  <mat-card-header>
+    <mat-card-title><strong>Customer Information</strong></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>Firstname: </strong> {{ customer.firstname }}</p>
+    <p><strong>Lastname: </strong> {{ customer.lastname }}</p>
+    <p><strong>Email: </strong> {{ customer.email }}</p>
+    <p><strong>Gender: </strong> {{ customer.gender }}</p>
+    <p><strong>Phone: </strong>{{ customer.phone }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="btn-group d-flex">
+      <a
+        class="btn btn-primary w-100"
+        [routerLink]="['/customers/edit', customer.id]"
+        >Update</a
+      >
+      <button class="btn btn-danger w-100" (click)="deleteCustomer()">
+        Delete
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>
